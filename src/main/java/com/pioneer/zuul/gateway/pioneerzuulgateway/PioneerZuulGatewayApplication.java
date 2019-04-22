@@ -2,6 +2,7 @@ package com.pioneer.zuul.gateway.pioneerzuulgateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 
@@ -12,6 +13,7 @@ import com.pioneer.zuul.gateway.pioneerzuulgateway.filters.RouteFilter;
 
 @SpringBootApplication
 @EnableZuulProxy
+@EnableEurekaClient
 public class PioneerZuulGatewayApplication {
 
 	public static void main(String[] args) {

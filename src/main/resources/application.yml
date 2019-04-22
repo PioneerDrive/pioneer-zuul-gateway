@@ -13,10 +13,39 @@ eureka:         #tells about the Eureka server details and its refresh time
 spring:    
   application:
     name: pioneer-zuul-gateway   #current service name to be used by the eureka server
+  aop:
+    proxyTargetClass: true     
+     
+zuul:
+  routes:
+    resource-server: /pioneer-resource-server/**
+    pioneer-authorization-server:
+      sensitiveHeaders: Authorization
+      path: /pioneer-authorization-server/**
+      stripPrefix: false
+  add-proxy-headers: true
+
+security:
+  basic:
+    enabled: false
+  oauth2:
+    sso:
+      loginPath: /login
+    client:
+      accessTokenUri: http://localhost:8769/authorization-server-1/oauth/token
+      userAuthorizationUri: /authorization-server-1/oauth/authorize
+      clientId: fooClient
+      clientSecret: fooSecret
+    resource:
+      jwt:
+        keyValue: "abc"
+      id: fooScope
+      serviceId: ${PREFIX:}resource     
+     
      
 management:
   security:
-    enabled: false  #disable the spring security on the management endpoints like /env, /refresh etc.
+    enabled: true  #disable the spring security on the management endpoints like /env, /refresh etc.
  
 logging:
   level:
