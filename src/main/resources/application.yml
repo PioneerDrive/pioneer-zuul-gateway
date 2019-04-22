@@ -28,7 +28,7 @@ zuul:
       path: /pioneer-authorization-server/**
       url: https://localhost:8769/auth/
 #      stripPrefix: false
-    login:
+    nologin:
       url: https://localhost:8769/me
   add-proxy-headers: true
 
