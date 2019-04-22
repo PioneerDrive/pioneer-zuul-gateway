@@ -18,7 +18,7 @@ spring:
      
 zuul:
   routes:
-    resource-server: /pioneer-resource-server/**
+    pioneer-resource-server: /pioneer-resource-server/**
     pioneer-authorization-server:
       sensitiveHeaders: Authorization
       path: /pioneer-authorization-server/**
