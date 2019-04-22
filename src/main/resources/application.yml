@@ -18,8 +18,8 @@ spring:
      
 zuul:
   routes:
-    pioneer-resource-server: /pioneer-resource-server/**
-    pioneer-authorization-server:
+    resource: /pioneer-resource-server/**
+    authorization:
       sensitiveHeaders: Authorization
       path: /pioneer-authorization-server/**
       stripPrefix: false
@@ -27,7 +27,7 @@ zuul:
 
 security:
   basic:
-    enabled: false
+    enabled: true
   oauth2:
     sso:
       loginPath: /login
@@ -42,6 +42,12 @@ security:
       id: fooScope
       serviceId: ${PREFIX:}resource     
      
+server:
+  port: 8765
+     
+ribbon:
+  eureka:
+    enabled: false     
      
 management:
   security:
