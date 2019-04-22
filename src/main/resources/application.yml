@@ -18,11 +18,18 @@ spring:
      
 zuul:
   routes:
+    render: 
+      sensitiveHeaders: 
+      path: /pioneer-renderfarm/**
+      url: https://localhost:8095/
     resource: /pioneer-resource-server/**
-    authorization:
-      sensitiveHeaders: Authorization
+    auth:
+      sensitiveHeaders: 
       path: /pioneer-authorization-server/**
-      stripPrefix: false
+      url: https://localhost:8769/auth/
+#      stripPrefix: false
+    login:
+      url: https://localhost:8769/me
   add-proxy-headers: true
 
 security:
@@ -32,10 +39,10 @@ security:
     sso:
       loginPath: /login
     client:
-      accessTokenUri: http://localhost:8769/pioneer-authorization-server/oauth/token
-      userAuthorizationUri: /pioneer-authorization-server/oauth/authorize
-      clientId: fooClient
-      clientSecret: fooSecret
+      accessTokenUri: http://localhost:8769/oauth/token
+      userAuthorizationUri: /oauth/authorize
+      clientId: bgonza
+      clientSecret: pwd12345
     resource:
       jwt:
         keyValue: "abc"

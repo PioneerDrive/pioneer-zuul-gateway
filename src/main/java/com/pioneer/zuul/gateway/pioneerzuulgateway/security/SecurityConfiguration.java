@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception { // @formatter:off
         http.csrf().disable()
             .authorizeRequests()
-            .antMatchers("/pioneer-authorization-server/**", "/login").permitAll()
+            .antMatchers("/pioneer-authorization-server/**", "/render/**", "PIONEER-RENDERFARM/**", "/login").permitAll()
             .anyRequest().authenticated()
             .and().addFilterAfter(oAuth2AuthenticationProcessingFilter(), AbstractPreAuthenticatedProcessingFilter.class)
             .logout().permitAll().logoutSuccessUrl("/");
