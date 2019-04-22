@@ -32,8 +32,8 @@ security:
     sso:
       loginPath: /login
     client:
-      accessTokenUri: http://localhost:8769/authorization-server-1/oauth/token
-      userAuthorizationUri: /authorization-server-1/oauth/authorize
+      accessTokenUri: http://localhost:8769/pioneer-authorization-server/oauth/token
+      userAuthorizationUri: /pioneer-authorization-server/oauth/authorize
       clientId: fooClient
       clientSecret: fooSecret
     resource:
